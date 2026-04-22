@@ -4,3 +4,5 @@
   - César A. Sánchez
 - [Binhex Systems Solutions](https://binhex.cloud/):
   - Deriman Alonso (d.alonso@binhex.cloud)
+- [Heliconia Solutions Pvt. Ltd.](https://www.heliconia.io)
+  - Bhavesh Heliconia

@@ -14,7 +14,6 @@ class TestSaleStockCancelRestriction(BaseCommon):
         cls.product = cls.env["product.product"].create(
             {"name": "Product test", "type": "consu", "is_storable": True}
         )
-        cls.partner = cls.env["res.partner"].create({"name": "Partner test"})
         so_form = Form(cls.env["sale.order"])
         so_form.partner_id = cls.partner
         with so_form.order_line.new() as soline_form:
@@ -36,11 +35,6 @@ class TestSaleStockCancelRestriction(BaseCommon):
             self.sale_order.action_cancel()
 
     def test_cancel_sale_order_ok(self):
-        """When canceling the order, the wizard is generated with the
-        model 'sale.order.cancel
-        """
-        wizz = self.sale_order.action_cancel()
-        self.assertEqual(
-            wizz["res_model"],
-            "sale.order.cancel",
-        )
+        """When canceling the order, the state should change to 'cancel'"""
+        self.sale_order.action_cancel()
+        self.assertEqual(self.sale_order.state, "cancel")
